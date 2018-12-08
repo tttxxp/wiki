@@ -5,4 +5,13 @@ url:
 title: 
 keywords: 
 description: 
-author: 
+author:
+
+root: /wiki
+
+deploy:
+    - type: git
+      remote: origin
+      branch: gh-pages
+      
+theme: simple2 
