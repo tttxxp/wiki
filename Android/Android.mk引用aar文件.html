@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/tango.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>Android.mk引用aar文件 - </title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <div id="container">
+      
+<div id="header">
+  <div class="post-nav"><a href="/wiki/">Home</a>&nbsp;&#187;&nbsp;<a href="/wiki/#Android">Android</a>&nbsp;&#187;&nbsp;Android.mk引用aar文件
+    <span class="updated">Page Updated&nbsp;
+      2018-12-11 14:16
+    </span></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="page_title">Android.mk引用aar文件</div>
+
+  <h1 id="android-50">Android 5.0及以上版本</h1>
+<ul>
+<li>修改Android.mk文件 </li>
+</ul>
+<div class="hlcode"><pre><span class="cp"># 1. </span>
+<span class="n">LOCAL_AAPT_FLAGS</span> <span class="o">:=</span> \
+  <span class="o">--</span><span class="k">auto</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">overlay</span> \
+  <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">packages</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">package</span><span class="o">&gt;</span>
+<span class="cp"># 2.</span>
+<span class="n">LOCAL_STATIC_JAVA_AAR_LIBRARIES</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">alias</span><span class="o">&gt;</span>
+
+<span class="cp"># 3. </span>
+<span class="n">LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">alias</span><span class="o">&gt;:</span><span class="n">libs</span><span class="o">/&lt;</span><span class="n">lib</span> <span class="n">file</span><span class="o">&gt;</span><span class="p">.</span><span class="n">aar</span>
+</pre></div>
+
+
+<hr />
+<h1 id="android-50_1">Android 5.0以下版本</h1>
+<ul>
+<li>解压aar文件</li>
+</ul>
+<div class="hlcode"><pre><span class="n">unzip</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">file</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>修改Android.mk文件</li>
+</ul>
+<div class="hlcode"><pre><span class="cp"># 1. </span>
+<span class="n">LOCAL_AAPT_FLAGS</span> <span class="o">:=</span> \
+  <span class="o">--</span><span class="k">auto</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">overlay</span> \
+  <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">packages</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">package</span><span class="o">&gt;</span>
+<span class="cp"># 2.</span>
+<span class="n">LOCAL_RESOURCE_DIR</span> <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">LOCAL_PATH</span><span class="p">)</span><span class="o">/</span><span class="n">res</span> \
+    <span class="err">$</span><span class="p">(</span><span class="n">LOCAL_PATH</span><span class="p">)</span><span class="o">/&lt;</span><span class="n">aar</span> <span class="n">dir</span><span class="o">&gt;/</span><span class="n">res</span>
+
+<span class="cp"># 3. </span>
+<span class="n">LOCAL_STATIC_JAVA_LIBRARIES</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">alias</span><span class="o">&gt;</span>
+
+<span class="cp"># 4. </span>
+<span class="n">LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">aar</span> <span class="n">alias</span><span class="o">&gt;:&lt;</span><span class="n">aar</span> <span class="n">dir</span><span class="o">&gt;/</span><span class="n">classes</span><span class="p">.</span><span class="n">jar</span>
+</pre></div>
+
+
+<h1 id="_1">参考</h1>
+<p><a href="https://blog.csdn.net/xiaowan0404/article/details/52166969" title="Android.mk引用aar文件">Android.mk引用aar文件</a></p>
+    </div>
+    <div id="footer">
+      <span>
+        <p>Copyright © 2019 .
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
+        <p>Site Generated 2019-10-09 14:31:37</p>
+      </span>
+    </div>
+
+    
+    
+  </body>
+</html>
