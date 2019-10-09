@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/style.css">
+    <link rel="Stylesheet" type="text/css" href="/wiki/static/css/tango.css">
+    <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>服务器设置开机自启 - </title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+    <div id="container">
+      
+<div id="header">
+  <div class="post-nav"><a href="/wiki/">Home</a>&nbsp;&#187;&nbsp;<a href="/wiki/#Linux">Linux</a>&nbsp;&#187;&nbsp;服务器设置开机自启
+    <span class="updated">Page Updated&nbsp;
+      2019-10-09 15:07
+    </span></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="page_title">服务器设置开机自启</div>
+
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#centos-6">Centos 6</a><ul>
+<li><a href="#_1">方法一</a></li>
+<li><a href="#_2">方法二</a></li>
+</ul>
+</li>
+<li><a href="#centos-7">Centos 7</a></li>
+<li><a href="#ubuntu">Ubuntu</a></li>
+</ul>
+</div>
+<h1 id="centos-6">Centos 6</h1>
+<h2 id="_1">方法一</h2>
+<div class="hlcode"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rc</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rc</span><span class="p">.</span><span class="n">local</span>
+</pre></div>
+
+
+<p>添加</p>
+<div class="hlcode"><pre><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nginx</span>
+</pre></div>
+
+
+<p>修改权限 </p>
+<div class="hlcode"><pre><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rc</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rc</span><span class="p">.</span><span class="n">local</span>
+</pre></div>
+
+
+<h2 id="_2">方法二</h2>
+<div class="hlcode"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">isNumberLegal</span><span class="o">(</span><span class="s">&quot;3342392&quot;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;合法&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isNumberLegal</span><span class="o">(</span><span class="n">String</span> <span class="n">phoneNumber</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">phoneNumber</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="n">phoneNumber</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">7</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">new</span> <span class="nf">Exception</span><span class="o">(</span><span class="s">&quot;非法：号码格式错误&quot;</span><span class="o">).</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">StringUtil</span><span class="o">.</span><span class="na">isNumer</span><span class="o">(</span><span class="n">phoneNumber</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">new</span> <span class="nf">Exception</span><span class="o">(</span><span class="s">&quot;非法：号码必须为数字&quot;</span><span class="o">).</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">phoneNumber</span> <span class="o">=</span> <span class="n">StringUtil</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">phoneNumber</span><span class="o">,</span> <span class="n">phoneNumber</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">7</span><span class="o">,</span> <span class="n">phoneNumber</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">prefixCode</span> <span class="o">=</span> <span class="n">phoneNumber</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">prefixCode</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="sc">&#39;0&#39;</span> <span class="o">||</span> <span class="n">prefixCode</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="sc">&#39;1&#39;</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">new</span> <span class="nf">Exception</span><span class="o">(</span><span class="s">&quot;非法：前缀码必须为非‘0’ ‘1’ 开头的数字&quot;</span><span class="o">).</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+
+
+<h1 id="centos-7">Centos 7</h1>
+<h1 id="ubuntu">Ubuntu</h1>
+    </div>
+    <div id="footer">
+      <span>
+        <p>Copyright © 2019 .
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.</p>
+        <p>Site Generated 2019-10-09 17:57:48</p>
+      </span>
+    </div>
+
+    
+    
+  </body>
+</html>
