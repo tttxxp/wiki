@@ -15,3 +15,5 @@ deploy:
       branch: gh-pages
       
 theme: simple2 
+pygments: true
+debug: true
