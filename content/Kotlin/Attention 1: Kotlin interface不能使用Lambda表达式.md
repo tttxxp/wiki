@@ -1,5 +1,5 @@
 ---
-title: "ATTENTION 1: Kotlin interface不能使用Lambda表达式"
+title: "Attention 1: Kotlin interface不能使用Lambda表达式"
 date: 2019-10-18 14:22
 ---
 
